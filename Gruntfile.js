@@ -14,8 +14,8 @@ module.exports = function(grunt) {
         options: {
           engine: 'im',
           sizes: [{
-            width: 600,
-            suffix: '_medium',
+            width: 100,
+            suffix: '_l',
             quality: 30
           }]
         },
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
           expand: true,
           src: ['*.{gif,jpg,png}'],
           cwd: 'views/images',
-          dest: 'views/img-src/medium/'
+          dest: 'views/img-src/l/'
         }]
       }
     },
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     /* Clear out the images directory if it exists */
     clean: {
       dev: {
-        src: ['views/img-src/medium'],
+        src: ['views/img-src/l'],
       },
     },
 
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     mkdir: {
       dev: {
         options: {
-          create: ['views/img-src/medium']
+          create: ['views/img-src/l']
         },
       },
     },
@@ -50,18 +50,39 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           src: ['img/fixed/*.{gif,jpg,png}'],
-          dest: 'views/img-src/medium/',
+          dest: 'views/img-src/l/',
           flatten: true,
         }]
       },
     },
 
+    postcss: {
+      options: {
+        map: true, // inline sourcemaps
+
+        // or
+        map: {
+            inline: false, // save all sourcemaps as separate files...
+            annotation: 'dist/css/maps/' // ...to the specified directory
+        },
+
+        processors: [
+          require('pixrem')(), // add fallbacks for rem units
+          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+          require('cssnano')() // minify the result
+        ]
+      },
+      dist: {
+        src: 'css/*.css'
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-mkdir');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.registerTask('default', ['clean', 'mkdir', 'copy', 'responsive_images']);
 
 };
