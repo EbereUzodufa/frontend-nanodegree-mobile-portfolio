@@ -11,23 +11,14 @@
     <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
 
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet">
-
-    <script>
-      (function(w,g){w['GoogleAnalyticsObject']=g;
-      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-
-      // Optional TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-XXXX-Y');
-      ga('send', 'pageview');
-    </script>
-    <script src="//www.google-analytics.com/analytics.js"></script>
-    <script src="js/perfmatters.js"></script>
+    <link href="css/print.css" rel="stylesheet" media="print">
   </head>
 
   <body>
     <header>
-      <a href="/"><img src="img/profilepic.jpg"></a>
+      <a href="/">
+        <img src="img-src/small/profilepic-480_small.jpg" srcset="img-src/medium/profilepic-800_medium.jpg 800px, img-src/large/profilepic-1600_large.jpg 1600px">
+      </a>
       <p>Cameron Pittman<br><span>Course Developer</span></p>
     </header>
 
@@ -38,7 +29,7 @@
 
       <div class="content">
 
-        <img class="img-responsive" src="img/2048.png">
+        <img class="img-responsive" src="img-src/small/2048-480_small.png" srcset="img-src/medium/2048-800_medium.png 800px, img-src/large/2048-1600_large.png 1600px">
 
         <p>Bacon ipsum dolor sit amet et pork belly porchetta excepteur dolor, laborum laboris magna labore dolore in fugiat beef ribs. Fugiat leberkas nulla do kevin dolore. Flank hamburger dolor swine prosciutto sirloin pig jerky sunt consequat pariatur. Mollit meatloaf nostrud laboris shoulder excepteur velit officia meatball nisi turkey. Nulla jowl spare ribs, et drumstick magna frankfurter.</p>
 
@@ -49,5 +40,15 @@
     <footer>
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
+    <script>
+      (function(w,g){w['GoogleAnalyticsObject']=g;
+      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+
+      // Optional TODO: replace with your Google Analytics profile ID.
+      ga('create', 'UA-XXXX-Y');
+      ga('send', 'pageview');
+    </script>
+    <script src="//www.google-analytics.com/analytics.js"></script>
+    <script src="js/perfmatters.js"></script>
   </body>
 </html>
